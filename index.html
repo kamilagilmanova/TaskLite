@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskLite</title>
-</head>
-<body class="todo">
-<header class="header">
-    <div class="container header__container">
-        <h3 class="header__title">
-            TaskLite
-        </h3>
-        
+  </head>
+  <body class="todo">
+    <header class="header">
+      <div class="container header__container">
+        <h3 class="header__title">TaskLite</h3>
+
         <nav class="tabs">
-            <a href="index.html">To Do</a>
-            <a href="kanban.html">Kanban</a>
+          <a href="index.html">To Do</a>
+          <a href="kanban.html">Kanban</a>
         </nav>
-    </div>
-</header>
-<main class="container">
-    <h1 class="title">Задачи</h1>
-</main>
-</body>
+      </div>
+    </header>
+    <main class="container">
+      <h1 class="title">Задачи</h1>
+      <div class="form-add">
+        <input
+          type="text"
+          class="form-add__input"
+          placeholder="Введите задачу"
+        />
+        <button type="button" class="form-add-button">Добавить</button>
+      </div>
+      <div class="toolbar">
+        <input type="text" class="toolbar__search" />
+        <div class="toolbar__tabs tabs">
+          <button class="tabs__item">Все</button>
+          <button class="tabs__item">Активные</button>
+          <button class="tabs__item">Завершенные</button>
+        </div>
+        <select class="toolbar__sort">
+          <option value="old">Сначала старые</option>
+          <option value="new">Сначала новые</option>
+        </select>
+      </div>
+
+      <div class="task">
+        <div class="content">
+          <div class="task__title">RAndom task</div>
+          <div class="task__meta">12/13.12, 14:11</div>
+          <div class="task__actions">
+            <button class="task__button task__button--edit">Изменить</button>
+            <button class="task__button task__button--delete">Удалить</button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer-controls">
+        <div class="footer-controls__counters">
+          <span> Всего: 1 </span>
+          <span> Активных: 1 </span>
+          <span> Выполненных: 1 </span>
+        </div>
+        <button class="footer-controls__button">Очистить выполненные</button>
+      </footer>
+    </main>
+  </body>
 </html>
