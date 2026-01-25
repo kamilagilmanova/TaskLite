@@ -1,0 +1,33 @@
+.form-add {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-add__input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid rgba(30, 10, 60, 0.12);
+  border-radius: 8px;
+  outline: none;
+}
+
+.form-add__input::placeholder {
+  color: #9b96a6;
+}
+
+.form-add-button {
+  padding: 12px 45px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #7e66cd;
+  border: 1px solid rgba(30, 10, 60, 0.12);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
