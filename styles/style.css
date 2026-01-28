@@ -108,9 +108,9 @@ background-color: transparent;
   color: #374151;
 }
 
-.tab.active {
-  background-color: #e8e8e8;
-  border-color: #bbb;
+.todo .tab.active {
+  background-color: #e8e8e8; 
+  border-color: #fff;
 }
 
 .todo {
@@ -120,4 +120,44 @@ radial-gradient(1200px 900px at 80% 35%, #f6eee4 0%, transparent 60%),
 radial-gradient(1200px 900px at 50% 85%, #e6eef6 0%, transparent 60%),
 linear-gradient(#f6f3f9, #fbfaf8);
 background-attachment: fixed;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 28px 0 20px;
+}
+
+.tabs__item {
+  padding: 10px 15px;
+  border: 1px solid rgba(30, 10, 60, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5e5472;
+  cursor: pointer;
+}
+
+.tabs__item:hover{
+  background: #f6f4ff;
+  border-color:rgba(30, 10, 60, 0.2);
+  color: #735cc6;
+}
+
+.tabs__item--active {
+  background-color: #e9e5f9;
+  border-color: #735cc6;
+  color: #5d47aa;
+}
+
+.toolbar__sort {
+  padding: 10px 28px 10px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5e5472;
+  border: 1px solid rgba(30, 10, 60, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
 }
