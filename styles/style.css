@@ -229,7 +229,28 @@ button {
 }
 
 .task__action {
-  padding: 6px;
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
   border: 1px solid rgba(30, 10, 60, 0.12);
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.task__action:hover {
+  background-color: #fff;
+  border-color: rgba(30, 10, 60, 0.2);
+  box-shadow: o 6px 12px rgba(30, 10, 60, 0.1);
+}
+
+.task__action:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 10, 60, 0.3);
+}
+
+.task__action:active {
+  transform: translateY(1px);
 }

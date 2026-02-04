@@ -91,7 +91,36 @@ console.log(done); // false
 
 function taskSummary(total, done) {
     const active = total - done;
-    console.log("Всего:" + total, "активных:" + active, "выполненных:" + done);
+    console.log("Всего:" + total, "активных:" + active, "выполнено:" + done);
 }
 
 taskSummary(10, 4);
+
+let cities = ["Москва", "Питер", "Казань"];
+cities[2] = "Новосибирск"; //изменили третий элемент
+console.log(cities); // ["Мщсква, Питер, Новосибирск"]
+
+let task = {
+    id: 1,
+    title: "Купить молоко",
+    status: "активна",
+}
+
+console.log(task.title);
+task.status = "выполнена";
+console.log(task.status);
+
+let todoList = [
+    {id: 1, title: "Купить молоко", status: "Активна"},
+    {id: 2, title: "Позвонить врачу", status: "выполнена"}
+]
+
+console.log(todoList[1].title);
+console.log(todoList.lenght);
+
+let user = {
+    name: "Иван",
+    tasks: todoList
+}
+
+console.log(user)
