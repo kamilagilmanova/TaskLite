@@ -1,7 +1,7 @@
 let a = 3
 let b = 9
 
-let sum = a + b 
+// let sum = a + b 
 let diff = a - b
 let mult = a * b;
 let div = a / b; 
@@ -66,3 +66,32 @@ if (amount === 0) {
 } else if (amount >= 5000) {
     console.log("Скидка 10%");
 }
+
+
+// Урок 3: Функции в JavaScript
+
+function sum(a, b) {
+    return a + b;
+}
+
+console.log(sum(2, 3)); 
+
+
+let result = sum(10, 15); //  25
+console.log(result);
+
+function isTaskDone(status) {
+    return status === "Выполнено";
+}
+
+console.log(isTaskDone("Выполнено")); // true
+
+let done = isTaskDone("В процессе"); 
+console.log(done); // false
+
+function taskSummary(total, done) {
+    const active = total - done;
+    console.log("Всего:" + total, "активных:" + active, "выполненных:" + done);
+}
+
+taskSummary(10, 4);
