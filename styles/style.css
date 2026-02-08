@@ -254,3 +254,29 @@ button {
 .task__action:active {
   transform: translateY(1px);
 }
+
+.footer-controls {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-top: 4px;
+}
+
+.footer-controls__counters {
+  font-size: 13px; 
+  color: #6f6781; 
+  padding-left: 5px; 
+  display: flex;
+  gap: 10px; 
+}
+
+.footer-controls__button {
+  font-size: 13px;
+  color: #6f6781;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-controls__button:hover {
+  color: #7e66cd;
+}

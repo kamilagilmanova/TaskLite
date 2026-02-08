@@ -48,24 +48,6 @@ if (tasks > 0 && urgent) {
     console.log("Все задачи завершены");
 }
 
-let isAdmin = false;
-let isModerator = true;
-if (isAdmin || isModerator) {
-    console.log("Доступ разрешён");
-} else {
-    console.log("Доступ запрещён");
-}
-
-let amount = 2500; 
-if (amount === 0) {
-    console.log("Корзина пуста");
-} else if (amount < 1000) {
-    console.log("Скидка не применяется");
-} else if (amount >= 1000 && amount < 5000) {
-    console.log("Скидка 5%");
-} else if (amount >= 5000) {
-    console.log("Скидка 10%");
-}
 
 
 // Урок 3: Функции в JavaScript
@@ -98,7 +80,7 @@ taskSummary(10, 4);
 
 let cities = ["Москва", "Питер", "Казань"];
 cities[2] = "Новосибирск"; //изменили третий элемент
-console.log(cities); // ["Мщсква, Питер, Новосибирск"]
+console.log(cities); // ["Москва, Питер, Новосибирск"]
 
 let task = {
     id: 1,
@@ -124,3 +106,50 @@ let user = {
 }
 
 console.log(user)
+
+function max(a, b) {
+    return a > b ? a : b;
+}
+console.log("Максимум (5, 10):", max(5, 10));
+console.log("Максимум (20, 3):", max(20, 3));
+
+function printTask(title, status) {
+    return `Задача: ${title} | Статус: ${status}`;
+}
+console.log(printTask("Помыть посуду", "в процессе"));
+
+function greetUser(name) {
+    return `Добро пожаловать, ${name}!`;
+}
+console.log(greetUser("Камила"));
+
+function taskSummaryFormatted(total, done) {
+    const active = total - done;
+    return `Всего: ${total} | Выполнено: ${done} | Активных: ${active}`;
+}
+console.log(taskSummaryFormatted(10, 4));
+
+
+let numbers = [10, 20, 30, 40, 50];
+console.log("Первый элемент:", numbers[0], "Последний:", numbers[numbers.length - 1]);
+
+let myTasks = [
+    { id: 1, title: "Купить хлеб", status: "активна" },
+    { id: 2, title: "Выучить JS", status: "в процессе" },
+    { id: 3, title: "Сходить в зал", status: "активна" }
+];
+
+
+
+function findTaskByTitle(tasksArray, titleToFind) {
+    for (let i = 0; i < tasksArray.length; i++) {
+        if (tasksArray[i].title === titleToFind) {
+            return tasksArray[i]; 
+        }
+    }
+    return "Задача не найдена";
+}
+
+
+console.log("Поиск 'Выучить JS':", findTaskByTitle(myTasks, "Выучить JS"));
+console.log("Поиск 'Купить пушку':", findTaskByTitle(myTasks, "Купить пушку"));
