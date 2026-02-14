@@ -276,3 +276,42 @@ for (let task of tasks) {
   }
 }
 console.log(activeTasks);
+
+
+function deleteTaskById(tasksArray, id) {
+  return tasksArray.filter(task => task.id !== id);
+}
+console.log("После удаления ID 3:", deleteTaskById(tasks, 3));
+
+// function toggleTaskStatus(tasksArray, id) {
+//   return tasksArray.map(task => {
+//     if (task.id === id) {
+//       return {
+//         ...task,
+//         status: task.status === "выполнена" ? "активна" : "выполнена"
+//       };
+//     }
+//     return task;
+//   });
+// }
+// console.log("Toggle статуса для ID 1:", toggleTaskStatus(tasks, 1));
+
+function clearCompletedTasks(tasksArray) {
+  return tasksArray.filter(task => task.status !== "выполнена");
+}
+console.log("Только активные задачи:", clearCompletedTasks(tasks));
+
+
+function findTaskByKeyword(tasksArray, keyword) {
+  const lowerKeyword = keyword.toLowerCase();
+  
+
+  const foundTask = tasksArray.find(task => 
+    task.title.toLowerCase().includes(lowerKeyword)
+  );
+
+  return foundTask ? foundTask : "Задача не найдена";
+}
+
+console.log("Поиск 'молоко':", findTaskByKeyword(tasks, "молоко"));
+console.log("Поиск 'прыгать':", findTaskByKeyword(tasks, "прыгать"));
