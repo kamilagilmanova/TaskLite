@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,7 +25,7 @@
           class="form-add__input"
           placeholder="Введите задачу"
         />
-        <button type="button" class="form-add-button">Добавить</button>
+        <button type="button" class="form-add__button">Добавить</button>
       </div>
       <div class="toolbar">
         <input type="text" class="toolbar__search" />
@@ -41,7 +41,8 @@
         </select>
       </div>
 
-      <div class="task">
+      <div class="tasks"></div>
+      <!-- <div class="task">
         <div class="content">
           <div class="task__title">RAndom task</div>
           <div class="task__meta">12/13.12, 14:11</div>
@@ -85,7 +86,7 @@
             </svg>
           </button>
         </div>
-      </div>
+      </div> -->
 
       <footer class="footer-controls">
         <div class="footer-controls__counters">
@@ -93,9 +94,12 @@
           <span> Активных: 1 </span>
           <span> Выполненных: 1 </span>
         </div>
-        <button class="footer-controls__button">Очистить выполненные</button>
+        <button class="footer-controls__button button--clear">
+          Очистить выполненные
+        </button>
       </footer>
     </main>
-    <script src="./js/task.js"></script>
+    <!-- <script src="./js/task.js"></script> -->
+      <script src="./js/main.js"></script>
   </body>
 </html>

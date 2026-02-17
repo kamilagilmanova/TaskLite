@@ -57,7 +57,7 @@ button {
   color: #9b96a6;
 }
 
-.form-add-button {
+.form-add__button {
   padding: 12px 45px;
   font-size: 14px;
   font-weight: 600;
@@ -271,6 +271,17 @@ button {
 }
 
 .footer-controls__button {
+  font-size: 13px;
+  color: #6f6781;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-controls__button:hover {
+  color: #7e66cd;
+}
+
+.button--clear {
   padding: 6px 12px;
   font-size: 13px;
   background-color: transparent;
@@ -278,24 +289,25 @@ button {
   text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
+  
   color: #735cc6;
   border: 1px dashed #a28bdc;
 }
 
-.footer-controls__button:hover {
+.button--clear:hover {
   background-color: #f6f4ff;
   color: #735cc6;
   border-style: solid;
   border-color: #735cc6;
 }
 
-.footer-controls__button:active {
+.button--clear:active {
   background-color: #e9e5f9;
   border-color: #5d47aa;
   color: #5d47aa;
 }
 
-.footer-controls__button:disabled {
+.button--clear:disabled {
   color: #8e8b99;
   border-color: #c8c5cf;
   background-color: #f1f1f3;
