@@ -6,29 +6,33 @@ const searchInput = document.querySelector(".toolbar__search");
 const footer = document.querySelector(".footer-controls");
 const sortSelect = document.querySelector(".toolbar__sort");
 
-function renderTask(taskData) {
-  const task = document.createElement("div");
-  task.classList.add("task");
+function renderTask() {
+  container.innerHTML = "";
 
-  const content = document.createElement("div");
-  content.classList.add("task__content");
+  tasks.forEach((task) => {
+    const item = document.createElement("div");
+    item.classList.add("task");
 
-  const title = document.createElement("div");
-  title.classList.add("task__title");
-  title.textContent = taskData.text;
+    const content = document.createElement("div");
+    content.classList.add("task__content");
 
-  const meta = document.createElement("div");
-  meta.classList.add("task__meta");
-  meta.textContent = taskData.date;
+    const title = document.createElement("div");
+    title.classList.add("task__title");
+    title.textContent = task.text;
 
-  content.append(title, meta);
+    const meta = document.createElement("div");
+    meta.classList.add("task__meta");
+    meta.textContent = task.date;
 
-  const actions = document.createElement("div");
-  actions.classList.add("task__actions");
+    content.append(title, meta);
 
-  const editBtn = document.createElement("button");
-  editBtn.classList.add("task__action", "task__action--edit");
-  editBtn.innerHTML = `<svg
+    const actions = document.createElement("div");
+    actions.classList.add("task__actions");
+
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("task__action", "task__action--edit");
+
+    editBtn.innerHTML = `<svg
               class="task__icon"
               viewbox="0 0 24 24"
               width="14"
@@ -44,10 +48,17 @@ function renderTask(taskData) {
                 d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
               />
             </svg>`;
+    editBtn.addEventListener("click", () => {
+      const newText = prompt("Изменить задачу:", task.text);
+      if (newText && newText.trim() !== "") {
+        task.text = newText.trim();
+        renderTask();
+      }
+    });
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("task__action", "task__button--delete");
-  deleteBtn.innerHTML = `<svg
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("task__action", "task__button--delete");
+    deleteBtn.innerHTML = `<svg
               class="task__icon"
               viewbox="0 0 24 24"
               width="14 "
@@ -65,22 +76,43 @@ function renderTask(taskData) {
               <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
             </svg>`;
 
-  actions.append(editBtn, deleteBtn);
-  task.append(content, actions);
+    deleteBtn.addEventListener("click", () => {
+      const index = tasks.indexOf(task);
 
-  return task;
+      tasks.splice(index, 1);
+
+      renderTask();
+    });
+
+    item.addEventListener("click", () => {
+      task.done = !task.done;
+    });
+
+    actions.append(editBtn, deleteBtn);
+    item.append(content, actions);
+
+    if (task.done) {
+      item.classList.add("task--done");
+    }
+
+    container.append(item);
+  });
 }
 
-const task1 = renderTask({
-  text: "Прогулка с собакой",
-  date: "Сегодня в 11:00",
-});
+const tabButtons = document.querySelectorAll(".tabs__item");
+const clearButton = document.querySelector(".button--clear");
 
-const task2 = renderTask({
-  text: "Прочитать книгу",
-  date: "Сегодня в 13:00",
-});
+const tasks = [
+  {
+    text: "Прогулка с собакой",
+    date: "Сегодня в 11:00",
+    done: true,
+  },
+  {
+    text: "Прочитать книгу",
+    date: "Сегодня в 13:00",
+    done: false,
+  },
+];
 
-container.append(task1, task2);
-
-// console.dirxml(task1)
+renderTask();
