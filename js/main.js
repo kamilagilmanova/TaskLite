@@ -1,10 +1,40 @@
 const input = document.querySelector(".form-add__input");
 const addButtton = document.querySelector(".form-add__button");
 const container = document.querySelector(".tasks");
-
+const form = document.querySelector(".form-add");
 const searchInput = document.querySelector(".toolbar__search");
 const footer = document.querySelector(".footer-controls");
 const sortSelect = document.querySelector(".toolbar__sort");
+
+let tasks = [];
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+addTask()
+});
+
+function addTask() {
+  const text = input.value.trim();
+  if (text === "" || text.length < 3) {
+    input.classList.add("input--error");
+    return;
+  }
+
+  input.classList.remove("input--error");
+
+  const newTask = {
+    id: tasks.length + 1,
+    text: text,
+    done: false,
+    date: "Сейчас",
+  };
+
+  tasks.push(newTask);
+  input.value = "";
+
+  renderAll();
+}
 
 function renderTask(task) {
   // container.innerHTML = "";
@@ -105,48 +135,48 @@ function renderTask(task) {
 const tabButtons = document.querySelectorAll(".tabs__item");
 const clearButton = document.querySelector(".button--clear");
 
-const tasks = [
-  {
-    text: "Прогулка с собакой",
-    date: "Сегодня в 11:00",
-    done: true,
-  },
-  {
-    text: "Прочитать книгу",
-    date: "Сегодня в 13:00",
-    done: false,
-  },
-  {
-    text: "Выполнить д/з",
-    date: "Сегодня в 11:00",
-    done: true,
-  },
-  {
-    text: "Убраться дома",
-    date: "Сегодня в 13:00",
-    done: false,
-  },
-  {
-    text: "Подготовить проект по веб-дизайну",
-    date: "Сегодня в 16:30",
-    done: false,
-  },
-  {
-    text: "Попрактиковать английскую лексику (IELTS)",
-    date: "Завтра в 10:00",
-    done: false,
-  },
-  {
-    text: "Испечь торт для Рейхан",
-    date: "Пятница в 18:00",
-    done: false,
-  },
-  {
-    text: "Посмотреть новую серию сериала",
-    date: "Вчера в 21:00",
-    done: true,
-  }
-];
+// const tasks = [
+//   {
+//     text: "Прогулка с собакой",
+//     date: "Сегодня в 11:00",
+//     done: true,
+//   },
+//   {
+//     text: "Прочитать книгу",
+//     date: "Сегодня в 13:00",
+//     done: false,
+//   },
+//   {
+//     text: "Выполнить д/з",
+//     date: "Сегодня в 11:00",
+//     done: true,
+//   },
+//   {
+//     text: "Убраться дома",
+//     date: "Сегодня в 13:00",
+//     done: false,
+//   },
+//   {
+//     text: "Подготовить проект по веб-дизайну",
+//     date: "Сегодня в 16:30",
+//     done: false,
+//   },
+//   {
+//     text: "Попрактиковать английскую лексику (IELTS)",
+//     date: "Завтра в 10:00",
+//     done: false,
+//   },
+//   {
+//     text: "Испечь торт для Рейхан",
+//     date: "Пятница в 18:00",
+//     done: false,
+//   },
+//   {
+//     text: "Посмотреть новую серию сериала",
+//     date: "Вчера в 21:00",
+//     done: true,
+//   }
+// ];
 
 function renderAll() {
   // container.innerHTML = "";

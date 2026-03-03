@@ -320,3 +320,8 @@ button {
   color: #8a8398;
   opacity: 0.7;
 }
+
+.input--error {
+  border-color: #cb6e6e;
+  box-shadow: 0 0 3px rgba(203, 110, 110, 0.4);
+}

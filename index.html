@@ -19,16 +19,16 @@
     </header>
     <main class="container">
       <h1 class="title">Задачи</h1>
-      <div class="form-add">
+      <form class="form-add">
         <input
           type="text"
           class="form-add__input"
           placeholder="Введите задачу"
         />
-        <button type="button" class="form-add__button">Добавить</button>
-      </div>
+        <button type="submit" class="form-add__button">Добавить</button>
+      </form>
       <div class="toolbar">
-        <input type="text" class="toolbar__search" />
+        <input type="text" class="toolbar__search" placeholder="Поиск задачи" />
 
         <div class="toolbar__tabs tabs">
           <button class="tabs__item tabs__item--active">Все</button>
@@ -41,12 +41,7 @@
         </select>
       </div>
 
-      <div class="tasks">
-
-
-
-        
-      </div>
+      <div class="tasks"></div>
       <!-- <div class="task">
         <div class="content">
           <div class="task__title">RAndom task</div>
@@ -105,6 +100,6 @@
       </footer>
     </main>
     <!-- <script src="./js/task.js"></script> -->
-      <script src="./js/main.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
