@@ -365,3 +365,23 @@ if (hours >= 0 && hours < 6) {
 }
 
 console.log(`Сегодня ${dayName}, сейчас ${timeOfDay}`);
+
+const checkDate = new Date();
+
+console.log("День:", checkDate.getDate());
+console.log("Месяц:", checkDate.getMonth() + 1);
+console.log("Год:", checkDate.getFullYear());
+
+const fullTime = checkDate.toLocaleTimeString('ru-RU'); 
+console.log("Время с секундами:", fullTime);
+
+
+function getDayPart() {
+  const hours = new Date().getHours();
+  if (hours >= 5 && hours < 12) return "Утро";
+  if (hours >= 12 && hours < 17) return "День";
+  if (hours >= 17 && hours < 24) return "Вечер";
+  return "Ночь";
+}
+
+console.log("Результат функции getDayPart():", getDayPart());

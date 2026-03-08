@@ -11,7 +11,7 @@ let tasks = [];
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-addTask()
+  addTask();
 });
 
 function addTask() {
@@ -188,15 +188,111 @@ function renderAll() {
     footer.before(card);
   });
 }
+// function formattedDate(date) {
+//   const d = date.getDate().toString().padStart(2, "0");
+//   const m = (date.getMonth() + 1).toString().padStart(2, "0");
+//   const y = date.getFullYear();
+
+//   const h = date.getHours().toString().padStart(2, "0");
+//   const min = date.getMinutes().toString().padStart(2, "0");
+
+//   return `${d}.${m}.${y}, ${h}:${min}`;
+// }
+
+// const now = new Date();
+// console.log(now);
+
+// const day = now.getDate();
+// const month = now.getMonth() + 1;
+// const year = now.getFullYear();
+// console.log(`${day}.${month}.${year}`);
+
+// const hours = now.getHours();
+// const minutes = now.getMinutes();
+// const seconds = now.getSeconds();
+// console.log(`${hours}:${minutes}:${seconds}`);
+
+// console.log(now.toLocaleDateString());
+
+// const days = [
+//   "Воскресенье",
+//   "Понедельник",
+//   "Вторник",
+//   "Среда",
+//   "Четверг",
+//   "Пятница",
+//   "Суббота",
+// ];
+
+// const dayName = days[now.getDay()];
+// console.log(dayName);
+
+// let timeOfDay;
+
+// if (hours >= 0 && hours < 6) {
+//   timeOfDay = "Ночь";
+// } else if (hours < 12) {
+//   timeOfDay = "Утро";
+// } else if (hours < 18) {
+//   timeOfDay = "День";
+// } else {
+//   timeOfDay = "Вечер";
+// }
+
+// console.log(`Сегодня ${dayName}, сейчас ${timeOfDay}`);
+
+// const checkDate = new Date();
+
+// console.log("День:", checkDate.getDate());
+// console.log("Месяц:", checkDate.getMonth() + 1);
+// console.log("Год:", checkDate.getFullYear());
+
+// const fullTime = checkDate.toLocaleTimeString("ru-RU");
+// console.log("Время с секундами:", fullTime);
+
+// function getDayPart() {
+//   const hours = new Date().getHours();
+//   if (hours >= 5 && hours < 12) return "Утро";
+//   if (hours >= 12 && hours < 17) return "День";
+//   if (hours >= 17 && hours < 24) return "Вечер";
+//   return "Ночь";
+// }
+
 function formattedDate(date) {
   const d = date.getDate().toString().padStart(2, "0");
-  const m = (date.getMonth() + 1).toString().padStart(2, "0");
+  const m = (date.getMonth() + 1).toString().padStart(2, "0"); // Месяцы +1
   const y = date.getFullYear();
 
-  const h = date.getHours().toString().padStart(2, "0");;
-  const min = date.getMinutes().toString().padStart(2, "0");;
+  const h = date.getHours().toString().padStart(2, "0");
+  const min = date.getMinutes().toString().padStart(2, "0");
 
   return `${d}.${m}.${y}, ${h}:${min}`;
 }
+
+const now = new Date();
+
+const day = now.getDate().toString().padStart(2, "0");
+const month = (now.getMonth() + 1).toString().padStart(2, "0");
+const year = now.getFullYear();
+
+console.log(`Дата: ${day}.${month}.${year}`);
+
+const hours = now.getHours().toString().padStart(2, "0");
+const minutes = now.getMinutes().toString().padStart(2, "0");
+const seconds = now.getSeconds().toString().padStart(2, "0");
+console.log(`Текущее время: ${hours}:${minutes}:${seconds}`);
+
+console.log("Локальный формат:", now.toLocaleString("ru-RU"));
+
+function getDayPart() {
+  const currentHour = new Date().getHours();
+
+  if (currentHour >= 5 && currentHour < 12) return "Утро";
+  if (currentHour >= 12 && currentHour < 17) return "День";
+  if (currentHour >= 17 && currentHour < 24) return "Вечер";
+  return "Ночь";
+}
+
+console.log("Сейчас на улице:", getDayPart());
 
 renderAll();
