@@ -5,13 +5,29 @@ const form = document.querySelector(".form-add");
 const searchInput = document.querySelector(".toolbar__search");
 const footer = document.querySelector(".footer-controls");
 const sortSelect = document.querySelector(".toolbar__sort");
+const tabButtons = document.querySelectorAll(".tabs__item");
+const clearButton = document.querySelector(".button--clear");
 
 let tasks = [];
+let sortOrder = "new";
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   addTask();
+});
+
+sortSelect.addEventListener("chsnge", () => {
+  // console.log(sortSelect.value);
+  // const val = sortSelect.value
+  // if(val.includes("новые")) sortOrder = "new"
+  // else if (val.includes("старые")) sortOrder = "old"
+  // else if(val.includes("a-z")) sortOrder = "az"
+  // else if (val.includes("z-a")) sortOrder = "za"
+  // sortOrder = sortSelect.value.includes("новые") ? "new" : "old";
+  sortOrder = sortSelect.value;
+  // console.log(sortOrder);
+  renderAll();
 });
 
 function addTask() {
@@ -122,6 +138,7 @@ function renderTask(task) {
 
   actions.append(editBtn, deleteBtn);
   item.append(content, actions);
+  container.append(item);
 
   if (task.done) {
     item.classList.add("task--done");
@@ -131,10 +148,6 @@ function renderTask(task) {
   //   container.append(item);
   // });
 }
-
-const tabButtons = document.querySelectorAll(".tabs__item");
-const clearButton = document.querySelector(".button--clear");
-
 // const tasks = [
 //   {
 //     text: "Прогулка с собакой",
@@ -183,7 +196,16 @@ function renderAll() {
 
   document.querySelectorAll(".task").forEach((t) => t.remove());
 
-  tasks.forEach((task) => {
+  const sorteredTasks = [...tasks].sort((a, b) => {
+    if (sortOrder === "new") return b.id - a.id;
+    if (sortOrder === "old") return a.id - b.id;
+    if (sortOrder === "az")
+      return a.text.toLowerCase() > b.text.toLowerCase() ? 1 : -1;
+    if (sortOrder === "za")
+      return b.text.toLowercase() > a.text.toLowercase() ? 1 : -1;
+  });
+
+  sorteredTasks.forEach((task) => {
     const card = renderTask(task);
     footer.before(card);
   });
