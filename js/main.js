@@ -11,13 +11,15 @@ const clearButton = document.querySelector(".button--clear");
 let tasks = [];
 let sortOrder = "new";
 
+let currentFilter = "all"; // all done active
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   addTask();
 });
 
-sortSelect.addEventListener("chsnge", () => {
+sortSelect.addEventListener("change", () => {
   // console.log(sortSelect.value);
   // const val = sortSelect.value
   // if(val.includes("новые")) sortOrder = "new"
@@ -28,6 +30,22 @@ sortSelect.addEventListener("chsnge", () => {
   sortOrder = sortSelect.value;
   // console.log(sortOrder);
   renderAll();
+});
+
+searchInput.addEventListener("input", () => {
+  renderAll();
+});
+
+tabButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    tabButtons.forEach((b) => b.classList.remove("tabs__item--active"));
+    btn.classList.add("tabs__item--active");
+    if (btn.textContent.includes("Активные")) currentFilter = "active";
+    else if (btn.textContent.includes("Завер")) currentFilter = "done";
+    else currentFilter = "all";
+
+    renderAll();
+  });
 });
 
 function addTask() {
@@ -196,7 +214,20 @@ function renderAll() {
 
   document.querySelectorAll(".task").forEach((t) => t.remove());
 
-  const sorteredTasks = [...tasks].sort((a, b) => {
+  let filtered = tasks.filter((task) => {
+    if (currentFilter === "active") return !task.done;
+    if (currentFilter === "done") return task.done;
+    return true;
+  });
+  const query = searchInput.value.trim().toLowerCase();
+
+  if (query) {
+    filtered = filtered.filter((task) => {
+      return task.text.toLowerCase().includes(query);
+    });
+  }
+
+  const sorteredTasks = [...filtered].sort((a, b) => {
     if (sortOrder === "new") return b.id - a.id;
     if (sortOrder === "old") return a.id - b.id;
     if (sortOrder === "az")
@@ -204,7 +235,6 @@ function renderAll() {
     if (sortOrder === "za")
       return b.text.toLowercase() > a.text.toLowercase() ? 1 : -1;
   });
-
   sorteredTasks.forEach((task) => {
     const card = renderTask(task);
     footer.before(card);

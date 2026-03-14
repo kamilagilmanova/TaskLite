@@ -385,3 +385,19 @@ function getDayPart() {
 }
 
 console.log("Результат функции getDayPart():", getDayPart());
+
+const homeworkTasks = [
+  { text: "Завершить рабочий проект по дизайну" },
+  { text: "Купить продукты на неделю" },
+  { text: "Обновить проектную документацию" },
+  { text: "Позвонить другу" },
+  { text: "Подготовиться к презентации проекта" }
+];
+
+const keyword = "проект";
+
+const filteredHomeworkTasks = homeworkTasks.filter(task => 
+  task.text.toLowerCase().includes(keyword.toLowerCase())
+);
+
+console.log("Задачи, содержащие слово 'проект':", filteredHomeworkTasks);
