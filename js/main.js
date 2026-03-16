@@ -8,9 +8,9 @@ const sortSelect = document.querySelector(".toolbar__sort");
 const tabButtons = document.querySelectorAll(".tabs__item");
 const clearButton = document.querySelector(".button--clear");
 
-let tasks = [];
-let sortOrder = "new";
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
+let sortOrder = "new";
 let currentFilter = "all"; // all done active
 
 form.addEventListener("submit", (event) => {
@@ -48,6 +48,11 @@ tabButtons.forEach((btn) => {
   });
 });
 
+clearButton.addEventListener("click", () => {
+  tasks = tasks.filter((t) => !t.done);
+  saveTasks();
+  renderAll();
+});
 function addTask() {
   const text = input.value.trim();
   if (text === "" || text.length < 3) {
@@ -67,6 +72,7 @@ function addTask() {
   tasks.push(newTask);
   input.value = "";
 
+  saveTasks();
   renderAll();
 }
 
@@ -116,6 +122,7 @@ function renderTask(task) {
     const newText = prompt("Изменить задачу:", task.text);
     if (newText && newText.trim() !== "") {
       task.text = newText.trim();
+      saveTasks();
       renderAll();
     }
   });
@@ -144,13 +151,14 @@ function renderTask(task) {
     const index = tasks.indexOf(task);
 
     tasks.splice(index, 1);
-
+    saveTasks();
     renderAll();
   });
 
   item.addEventListener("click", (event) => {
     if (event.target.closest(".task__action")) return;
     task.done = !task.done;
+    saveTasks();
     renderAll();
   });
 
@@ -239,77 +247,13 @@ function renderAll() {
     const card = renderTask(task);
     footer.before(card);
   });
+
+  updateCounter();
 }
-// function formattedDate(date) {
-//   const d = date.getDate().toString().padStart(2, "0");
-//   const m = (date.getMonth() + 1).toString().padStart(2, "0");
-//   const y = date.getFullYear();
 
-//   const h = date.getHours().toString().padStart(2, "0");
-//   const min = date.getMinutes().toString().padStart(2, "0");
-
-//   return `${d}.${m}.${y}, ${h}:${min}`;
-// }
-
-// const now = new Date();
-// console.log(now);
-
-// const day = now.getDate();
-// const month = now.getMonth() + 1;
-// const year = now.getFullYear();
-// console.log(`${day}.${month}.${year}`);
-
-// const hours = now.getHours();
-// const minutes = now.getMinutes();
-// const seconds = now.getSeconds();
-// console.log(`${hours}:${minutes}:${seconds}`);
-
-// console.log(now.toLocaleDateString());
-
-// const days = [
-//   "Воскресенье",
-//   "Понедельник",
-//   "Вторник",
-//   "Среда",
-//   "Четверг",
-//   "Пятница",
-//   "Суббота",
-// ];
-
-// const dayName = days[now.getDay()];
-// console.log(dayName);
-
-// let timeOfDay;
-
-// if (hours >= 0 && hours < 6) {
-//   timeOfDay = "Ночь";
-// } else if (hours < 12) {
-//   timeOfDay = "Утро";
-// } else if (hours < 18) {
-//   timeOfDay = "День";
-// } else {
-//   timeOfDay = "Вечер";
-// }
-
-// console.log(`Сегодня ${dayName}, сейчас ${timeOfDay}`);
-
-// const checkDate = new Date();
-
-// console.log("День:", checkDate.getDate());
-// console.log("Месяц:", checkDate.getMonth() + 1);
-// console.log("Год:", checkDate.getFullYear());
-
-// const fullTime = checkDate.toLocaleTimeString("ru-RU");
-// console.log("Время с секундами:", fullTime);
-
-// function getDayPart() {
-//   const hours = new Date().getHours();
-//   if (hours >= 5 && hours < 12) return "Утро";
-//   if (hours >= 12 && hours < 17) return "День";
-//   if (hours >= 17 && hours < 24) return "Вечер";
-//   return "Ночь";
-// }
-
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 function formattedDate(date) {
   const d = date.getDate().toString().padStart(2, "0");
   const m = (date.getMonth() + 1).toString().padStart(2, "0"); // Месяцы +1
@@ -346,5 +290,21 @@ function getDayPart() {
 }
 
 console.log("Сейчас на улице:", getDayPart());
+
+function updateCounter() {
+  const total = tasks.length;
+  const active = tasks.filter((t) => !t.done).length;
+  const done = tasks.filter((t) => t.done).length;
+
+  clearButton.disabled = tasks.every((t) => !t.done);
+
+  const counters = document.querySelector(".footer-controls__counters");
+
+  if (counters) {
+    counters.innerHTML = `Всего: ${total}
+  Активных: ${active}
+Выполненных: ${done}`;
+  }
+}
 
 renderAll();
