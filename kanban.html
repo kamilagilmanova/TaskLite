@@ -1,25 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskLite</title>
-</head>
-<body class="todo">
-<header class="header">
-    <div class="container header__container">
-        <h3 class="header__title">
-            TaskLite
-        </h3>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body class="kanban">
+    <header class="header">
+      <div class="container header__container">
+        <h3 class="header__title">TaskLite</h3>
 
         <nav class="tabs">
-            <a href="index.html">To Do</a>
-            <a href="kanban.html">Kanban</a>
+          <a href="index.html">To Do</a>
+          <a href="kanban.html">Kanban</a>
         </nav>
+      </div>
+    </header>
+    <main class="container">
+      <h1 class="title">Канбан</h1>
+
+<div class="board">
+  <div class="column">
+    <div class="column__header">
+      <h2 class="column__subtitle">To Do</h2>
+      <span class="column__count">1</span>
     </div>
-</header>
-<main class="container">
-    <h1 class="title">Канбан</h1>
-</main>
-</body>
+    <div class="column__tasks">
+      <div class="column__task task-kanban">
+        <h3 class="task-kanban__title">Разработать макет</h3>
+        <p class="task-kanban__descr">Подготовить Figma-исходники для мобильной версии</p>
+        <div class="task-kanban__footer">
+          <span class="task-kanban__label low">Низкий приоритет</span>
+          <span class="task-kanban__date">до 20.05</span>
+        </div>
+      </div>
+    </div>
+    <button class="column__btn">+ Добавить задачу</button>
+  </div>
+
+  <div class="column">
+    <div class="column__header">
+      <h2 class="column__subtitle">In Progress</h2>
+      <span class="column__count">1</span>
+    </div>
+    <div class="column__tasks">
+      <div class="column__task task-kanban">
+        <h3 class="task-kanban__title">Верстка компонентов</h3>
+        <p class="task-kanban__descr">Настроить стили для карточек и кнопок</p>
+        <div class="task-kanban__footer">
+          <span class="task-kanban__label medium">Средний приоритет</span>
+          <span class="task-kanban__date">до 15.05</span>
+        </div>
+      </div>
+    </div>
+    <button class="column__btn">+ Добавить задачу</button>
+  </div>
+
+  <div class="column">
+    <div class="column__header">
+      <h2 class="column__subtitle">Done</h2>
+      <span class="column__count">1</span>
+    </div>
+    <div class="column__tasks">
+      <div class="column__task task-kanban">
+        <h3 class="task-kanban__title">Прочитать документацию</h3>
+        <p class="task-kanban__descr">Разобрать методы API</p>
+        <div class="task-kanban__footer">
+          <span class="task-kanban__label high">Высокий приоритет</span>
+          <span class="task-kanban__date">до 13.05</span>
+        </div>
+      </div>
+    </div>
+    <button class="column__btn">+ Добавить задачу</button>
+  </div>
+</div>
+    </main>
+    <script src="scripts/kanban.js"></script>
+  </body>
 </html>

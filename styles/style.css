@@ -114,11 +114,8 @@ button {
 }
 
 .todo {
-  background: radial-gradient(
-      1200px 900px at 20% 25%,
-      #ebe6f5 0%,
-      transparent 60%
-    ),
+  background:
+    radial-gradient(1200px 900px at 20% 25%, #ebe6f5 0%, transparent 60%),
     radial-gradient(1200px 900px at 80% 35%, #f6eee4 0%, transparent 60%),
     radial-gradient(1200px 900px at 50% 85%, #e6eef6 0%, transparent 60%),
     linear-gradient(#f6f3f9, #fbfaf8);
@@ -140,7 +137,10 @@ button {
   font-weight: 500;
   color: #5e5472;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
 }
 
 .tabs__item:hover {
@@ -182,7 +182,9 @@ button {
   border: 1px solid rgba(30, 10, 60, 0.12);
   border-radius: 8px;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .toolbar__search::placeholder {
@@ -256,18 +258,18 @@ button {
 }
 
 .footer-controls {
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 4px;
 }
 
 .footer-controls__counters {
-  font-size: 13px; 
-  color: #6f6781; 
-  padding-left: 5px; 
+  font-size: 13px;
+  color: #6f6781;
+  padding-left: 5px;
   display: flex;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .footer-controls__button {
@@ -289,7 +291,7 @@ button {
   text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
-  
+
   color: #735cc6;
   border: 1px dashed #a28bdc;
 }
@@ -314,7 +316,6 @@ button {
   cursor: not-allowed;
 }
 
-
 .task--done .task__title {
   text-decoration: line-through;
   color: #8a8398;
@@ -324,4 +325,56 @@ button {
 .input--error {
   border-color: #cb6e6e;
   box-shadow: 0 0 3px rgba(203, 110, 110, 0.4);
+}
+
+.kanban {
+  background:
+    radial-gradient(at 20% 25%, rgba(173, 216, 230, 0.45), transparent 60%),
+    radial-gradient(at 70% 15%, rgba(135, 206, 250, 0.45), transparent 55%),
+    radial-gradient(at 40% 75%, rgba(126, 207, 234, 0.45), transparent 65%),
+    radial-gradient(at 85% 60%, rgba(255, 239, 186, 0.55), transparent 55%),
+    radial-gradient(at 10% 85%, rgba(255, 218, 181, 0.448), transparent 60%),
+    radial-gradient(at 60% 80%, rgba(186, 230, 253, 0.5), transparent 60%),
+    linear-gradient(135deg, #e0f7fa 0%, #f0f9ff 100%);
+  background-attachment: fixed;
+}
+
+.board {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.column {
+  background-color: rgba(255, 2555, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.column__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.column__subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  padding-left: 8px;
+}
+
+.column__count {
+  font-size: 13px;
+  color: #64748b;
 }
