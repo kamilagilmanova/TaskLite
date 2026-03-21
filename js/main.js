@@ -241,7 +241,7 @@ function renderAll() {
     if (sortOrder === "az")
       return a.text.toLowerCase() > b.text.toLowerCase() ? 1 : -1;
     if (sortOrder === "za")
-      return b.text.toLowercase() > a.text.toLowercase() ? 1 : -1;
+      return b.text.toLowerCase() > a.text.toLowerCase() ? 1 : -1;
   });
   sorteredTasks.forEach((task) => {
     const card = renderTask(task);
