@@ -447,3 +447,60 @@ button {
   align-items: center;
   width: 100%;
 }
+
+.task-kanban__label {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.task-kanban__label.high {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.task-kanban__label.medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.task-kanban__label.low {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.task-kanban__date {
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.column__btn {
+  display: block;
+  margin: 12px 16px 18px;
+  padding: 8px;
+  
+  font-size: 13px;
+  font-weight: 500;
+  color: #2563eb;
+  text-align: center;
+  
+  background-color: rgba(37, 99, 235, 0.05);
+  border: 1px dashed rgba(37, 99, 235, 0.4);
+  border-radius: 8px;
+  
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.column__btn:hover {
+  background-color: rgba(37, 99, 235, 0.12);
+  border-style: solid;
+  border-color: #2563eb;
+}
+
+.column__btn:active {
+  transform: scale(0.98);
+}
