@@ -34,7 +34,7 @@ function renderBoard() {
                 </div>`;
 
       taskList.appendChild(el);
-    }),
+    });
       updateCount(column);
   });
 
