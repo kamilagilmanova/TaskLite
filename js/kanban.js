@@ -13,7 +13,7 @@ function renderBoard() {
 
     taskList.innerHTML = "";
 
-    (boardData[status].forEach((task, index) => {
+    boardData[status].forEach((task, index) => {
       const el = document.createElement("div");
 
       el.className = "column__task task-kanban";
@@ -35,10 +35,10 @@ function renderBoard() {
 
       taskList.appendChild(el);
     }),
-      updateCount(column));
+      updateCount(column);
   });
 
-  localStorage.setItem("kananData", JSON.stringify(boardData));
+  localStorage.setItem("kanbanData", JSON.stringify(boardData));
 }
 
 function updateCount(column) {
