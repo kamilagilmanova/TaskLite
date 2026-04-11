@@ -372,9 +372,8 @@ console.log("День:", checkDate.getDate());
 console.log("Месяц:", checkDate.getMonth() + 1);
 console.log("Год:", checkDate.getFullYear());
 
-const fullTime = checkDate.toLocaleTimeString('ru-RU'); 
+const fullTime = checkDate.toLocaleTimeString("ru-RU");
 console.log("Время с секундами:", fullTime);
-
 
 function getDayPart() {
   const hours = new Date().getHours();
@@ -391,13 +390,237 @@ const homeworkTasks = [
   { text: "Купить продукты на неделю" },
   { text: "Обновить проектную документацию" },
   { text: "Позвонить другу" },
-  { text: "Подготовиться к презентации проекта" }
+  { text: "Подготовиться к презентации проекта" },
 ];
 
 const keyword = "проект";
 
-const filteredHomeworkTasks = homeworkTasks.filter(task => 
-  task.text.toLowerCase().includes(keyword.toLowerCase())
+const filteredHomeworkTasks = homeworkTasks.filter((task) =>
+  task.text.toLowerCase().includes(keyword.toLowerCase()),
 );
 
 console.log("Задачи, содержащие слово 'проект':", filteredHomeworkTasks);
+
+const tasks = [
+  {
+    title: "Завершить рабочий проект по дизайну",
+    deadline: "2026-04-10",
+    status: "DONE",
+  },
+  {
+    title: "Купить продукты на неделю",
+    deadline: "2026-04-12",
+    status: "pending",
+  },
+  {
+    title: "Сделать уроки",
+    deadline: "2026-04-15",
+    status: "done",
+  },
+  {
+    title: "Сходить в бассейн",
+    deadline: "2026-04-11",
+    status: "PENDING",
+  },
+];
+
+function getClosestTask(tasks) {
+  let closestTask = null;
+  let closestTime = Infinity;
+
+  const today = new Date();
+
+  for (const task of tasks) {
+    const status = String(task.status || "")
+      .trim()
+      .toLowerCase();
+
+    if (status !== "done") {
+      const deadline = new Date(task.deadline);
+      const diff = deadline - today;
+
+      if (diff >= 0 && diff < closestTime) {
+        closestTime = diff;
+        closestTask = task;
+      }
+    }
+  }
+
+  if (!closestTask) {
+    return "Нет активных задач";
+  }
+
+  return closestTask.title;
+}
+
+console.log(getClosestTask(tasks));
+
+const votes = [
+  " Alice ",
+  "bob",
+  "ALICE",
+  "Bob ",
+  " alice",
+  "Charlie",
+  "charlie ",
+  "BOB",
+];
+
+function getWinner(votes) {
+  const map = {};
+
+  for (const vote of votes) {
+    const name = String(vote || "")
+      .trim()
+      .toLowerCase();
+
+    if (!name) continue;
+
+    if (!map[name]) {
+      map[name] = 0;
+    }
+
+    map[name]++;
+  }
+
+  let max = 0;
+  let winner = null;
+  let isTie = false;
+
+  for (const name in map) {
+    if (map[name] > max) {
+      max = map[name];
+      winner = name;
+      isTie = false;
+    } else if (map[name] === max) {
+      isTie = true;
+    }
+  }
+
+  if (isTie) {
+    return "Ничья";
+  }
+
+  return winner;
+}
+
+console.log(getWinner(votes));
+
+const comments = [
+  { user: " Alice ", text: " Hello everyone! " },
+  { user: "BOB", text: "<b>Nice post</b>" },
+  { user: "   ", text: "I am invisible user" }, // пустой user → игнор
+  { user: "Charlie", text: "   " }, // пустой текст → игнор
+  { user: null, text: "Hi!" }, // user невалидный → игнор
+  { user: "dave", text: "<script>alert(1)</script>" }, // XSS попытка
+  { user: "Eve", text: "   Good job!   " },
+  { user: "ALICE", text: "Second comment" }, // тот же пользователь в другом регистре
+];
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function formatComments(comments) {
+  const result = [];
+  for (const comm of comments) {
+    const user = String(comm.user || "")
+      .trim()
+      .toLowerCase();
+    const text = String(comm.text || "")
+      .trim()
+      .toLowerCase();
+
+    if (!user || !text) continue;
+
+    const safetext = escapeHtml(text);
+
+    result.push(user + ": " + safetext);
+  }
+
+  return result;
+}
+
+console.log(formatComments(comments));
+
+("JS, react, <script>, node");
+
+function renderTags(input) {
+  const seen = {};
+  const list = [];
+
+  const parts = String(input || "").split(",");
+
+  for (let part of parts) {
+    const tag = part.trim().toLowerCase();
+
+    if (!tag) continue;
+
+    if (!seen[tag]) {
+      seen[tag] = true;
+      list.push(tag);
+    }
+  }
+  let html = "<ul>";
+
+  for (let tag of list) {
+    const safeTag = escapeHtml(tag);
+
+    html += "<li>" + safeTag + "</li>";
+  }
+
+  html += "</ul>";
+
+  return html;
+}
+
+console.log(renderTags("JS, react, <script>, node"));
+
+const messages = [
+  { text: "Hello world" },
+  { text: "<b>Important</b> message" },
+  { text: "error happened" },
+];
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function searchMessages(messages, query) {
+  const result = [];
+
+  const normalizeQuery = String(query || "")
+    .trim()
+    .toLowerCase();
+
+  if (!normalizeQuery) return result;
+
+  for (const item of messages) {
+    const text = String(item.text || "");
+    const normalizeText = text.toLowerCase();
+
+    if (normalizeText.includes(normalizeQuery)) {
+      const safeText = escapeHtml(text);
+      result.push(safeText);
+    }
+  }
+
+  return result;
+}
+
+// const result1 = searchMessages(messages, "message");
+// console.log(result1);
+
+// const result2 = searchMessages(messages, "HELLO");
+// console.log(result2);
+
+// const result3 = searchMessages(messages, "JavaScript");
+// console.log(result3);
+
+console.log(searchMessages(messages, "error"));
