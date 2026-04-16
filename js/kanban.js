@@ -173,8 +173,8 @@ function normalizeWords(str) {
 
 window.deleteTask = function (status, index) {
   if (confirm("Вы уверены, что хотите удалить эту задачу?")) {
-    boardData[status].splice(index, 1); // Удаляем 1 элемент по индексу
-    renderBoard(); // Перерисовываем доску и сохраняем в LocalStorage
+    boardData[status].splice(index, 1);
+    renderBoard();
   }
 };
 
