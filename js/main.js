@@ -163,51 +163,7 @@ function renderTask(task) {
   }
 
   return item;
-  //   container.append(item);
-  // });
 }
-// const tasks = [
-//   {
-//     text: "Прогулка с собакой",
-//     date: "Сегодня в 11:00",
-//     done: true,
-//   },
-//   {
-//     text: "Прочитать книгу",
-//     date: "Сегодня в 13:00",
-//     done: false,
-//   },
-//   {
-//     text: "Выполнить д/з",
-//     date: "Сегодня в 11:00",
-//     done: true,
-//   },
-//   {
-//     text: "Убраться дома",
-//     date: "Сегодня в 13:00",
-//     done: false,
-//   },
-//   {
-//     text: "Подготовить проект по веб-дизайну",
-//     date: "Сегодня в 16:30",
-//     done: false,
-//   },
-//   {
-//     text: "Попрактиковать английскую лексику (IELTS)",
-//     date: "Завтра в 10:00",
-//     done: false,
-//   },
-//   {
-//     text: "Испечь торт для Рейхан",
-//     date: "Пятница в 18:00",
-//     done: false,
-//   },
-//   {
-//     text: "Посмотреть новую серию сериала",
-//     date: "Вчера в 21:00",
-//     done: true,
-//   }
-// ];
 
 function renderAll() {
   // container.innerHTML = "";
