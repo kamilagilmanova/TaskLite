@@ -45,6 +45,7 @@ clearButton.addEventListener("click", () => {
   saveTasks();
   renderAll();
 });
+
 function addTask() {
   const text = input.value.trim();
   if (text === "" || text.length < 3) {
