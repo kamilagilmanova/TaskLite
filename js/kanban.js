@@ -131,7 +131,6 @@ function normalizePriority(value) {
   if (["низ", "низкий", "н", "l", "low"].includes(v)) return "low";
   return "medium";
 
-  return "medium";
 }
 
 function priorityLabel(cleanPriority) {
