@@ -20,15 +20,7 @@ form.addEventListener("submit", (event) => {
 });
 
 sortSelect.addEventListener("change", () => {
-  // console.log(sortSelect.value);
-  // const val = sortSelect.value
-  // if(val.includes("новые")) sortOrder = "new"
-  // else if (val.includes("старые")) sortOrder = "old"
-  // else if(val.includes("a-z")) sortOrder = "az"
-  // else if (val.includes("z-a")) sortOrder = "za"
-  // sortOrder = sortSelect.value.includes("новые") ? "new" : "old";
   sortOrder = sortSelect.value;
-  // console.log(sortOrder);
   renderAll();
 });
 

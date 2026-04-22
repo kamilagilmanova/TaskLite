@@ -113,6 +113,12 @@ button {
   color: #7e66cd;
 }
 
+.kanban .tab.active {
+  background-color: #e0efff; 
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  color: #2563eb;
+}
+
 .todo {
   background:
     radial-gradient(1200px 900px at 20% 25%, #ebe6f5 0%, transparent 60%),
@@ -531,7 +537,7 @@ button {
 }
 
 .task-kanban {
-  position: relative; 
+  position: relative;
 }
 
 .task-kanban__delete {
@@ -549,5 +555,5 @@ button {
 }
 
 .task-kanban__delete:hover {
-  color: #ff4d4f; 
+  color: #ff4d4f;
 }
