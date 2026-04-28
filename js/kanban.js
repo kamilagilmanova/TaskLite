@@ -170,3 +170,151 @@ window.deleteTask = function (status, index) {
 };
 
 renderBoard();
+
+
+// const columns = document.querySelectorAll(".column");
+
+// let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+// let draggedTask = null;
+// let sourceStatus = null;
+
+// document.querySelectorAll(".column__btn").forEach((btn) => {
+//   btn.addEventListener("click", () => {
+//     const column = btn.closest(".column");
+//     const status = column.dataset.status;
+    
+//     const title = prompt("Введите название задачи") || "";
+//     if (!title) return;
+
+//     const descr = prompt("Введите описание задачи") || "";
+//     const priorityInput = prompt(`Приоритет (Высокий / Средний / Низкий)`) || "Средний";
+//     const deadline = prompt("Срок (например: 12.12):") || "";
+
+//     const cleanPriority = normalizePriority(priorityInput);
+
+//     const newTask = {
+//       id: Date.now(),
+//       text: title.trim(), 
+//       descr: descr.trim(),
+//       status: status,
+//       priority: cleanPriority,
+//       deadline: deadline.trim(),
+//       done: status === "done",
+//       date: new Date().toLocaleString("ru-RU").slice(0, 17).replace(',', '')
+//     };
+
+//     tasks.push(newTask);
+//     saveAndRender();
+//   });
+// });
+
+// function renderBoard() {
+//   tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+//   columns.forEach((column) => {
+//     const status = column.dataset.status;
+//     const taskList = column.querySelector(".column__tasks");
+
+//     taskList.innerHTML = "";
+
+//     const columnTasks = tasks.filter(t => t.status === status);
+
+//     columnTasks.forEach((task) => {
+//       const el = document.createElement("div");
+//       el.className = "column__task task-kanban";
+//       el.dataset.id = task.id;
+//       el.draggable = true;
+      
+//       el.innerHTML = `
+//         <button class="task-kanban__delete" onclick="deleteTask(${task.id})">×</button>
+//         <h3 class="task-kanban__title">${escapeHtml(task.text)}</h3>
+//         ${task.descr ? `<p class="task-kanban__descr">${escapeHtml(task.descr)}</p>` : ""}
+//         <div class="task-kanban__footer">
+//           <span class="task-kanban__label ${task.priority}">${priorityLabel(task.priority)}</span>
+//           <span class="task-kanban__deadline">${escapeHtml(task.deadline)}</span>
+//         </div>`;
+      
+//       addDragEvents(el);
+//       taskList.appendChild(el);
+//     });
+    
+//     const countLabel = column.querySelector(".column__count");
+//     if (countLabel) countLabel.textContent = columnTasks.length;
+//   });
+// }
+
+// function addDragEvents(el) {
+//   el.addEventListener("dragstart", (event) => {
+//     draggedTask = taskById(el.dataset.id);
+//     el.classList.add("dragging");
+//     event.dataTransfer.effectAllowed = "move";
+//   });
+
+//   el.addEventListener("dragend", () => {
+//     document.querySelectorAll(".column__task").forEach(t => t.classList.remove("dragging"));
+//     draggedTask = null;
+//   });
+// }
+
+// columns.forEach((column) => {
+//   const taskList = column.querySelector(".column__tasks");
+  
+//   taskList.addEventListener("dragover", (event) => {
+//     event.preventDefault();
+//     column.classList.add("drag-over");
+//   });
+
+//   taskList.addEventListener("dragleave", () => {
+//     column.classList.remove("drag-over");
+//   });
+
+//   taskList.addEventListener("drop", (event) => {
+//     event.preventDefault();
+//     column.classList.remove("drag-over");
+
+//     const targetStatus = column.dataset.status;
+//     if (!draggedTask) return;
+
+//     draggedTask.status = targetStatus;
+    
+//     draggedTask.done = targetStatus === "done";
+
+//     saveAndRender();
+//   });
+// });
+
+// function saveAndRender() {
+//   localStorage.setItem("tasks", JSON.stringify(tasks));
+//   renderBoard();
+// }
+
+// function taskById(id) {
+//   return tasks.find(t => t.id == id);
+// }
+
+// function normalizePriority(value) {
+//   const v = String(value || "").toLowerCase();
+//   if (v.includes("выс")) return "high";
+//   if (v.includes("низ")) return "low";
+//   return "medium";
+// }
+
+// function priorityLabel(p) {
+//   if (p === "high") return "Высокий приоритет";
+//   if (p === "low") return "Низкий приоритет";
+//   return "Средний приоритет";
+// }
+
+// function escapeHtml(str) {
+//   return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+// }
+
+// window.deleteTask = function (id) {
+//   if (confirm("Вы уверены, что хотите удалить эту задачу?")) {
+//     tasks = tasks.filter(t => t.id !== id);
+//     saveAndRender();
+//   }
+// };
+
+// renderBoard();
